@@ -1,3 +1,8 @@
+@import '../Vars.scss';
+
+body{
+    font-family: $theme-font;
+}
 h1{
     font-size: 70px;
 }
