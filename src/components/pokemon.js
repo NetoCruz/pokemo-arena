@@ -17,13 +17,14 @@ function Pokemon() {
           <ul>
             {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
             {data.results.map((img) => (
-              <li>
-                <p>{img.url}</p>
-              </li>
+              fetch(img.url)
+                .then((response) => response.json())
+                .then((allpokemon) => console.log(allpokemon.name))
             ))}
+            hola
           </ul>
         )}
-        <Api datos={data.results} />
+        <Api />
       </div>
     </>
   );
