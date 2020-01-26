@@ -7,8 +7,7 @@ function Pokemon() {
     'https://pokeapi.co/api/v2/pokemon?limit=30',
     //'https://pokeapi.co/api/v2/pokemon/1',
   );
-  console.log(data.results);
-
+  //console.log(data.results);
   return (
     <>
       <div>
