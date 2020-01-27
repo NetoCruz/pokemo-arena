@@ -3,11 +3,12 @@ import { useFetch } from './hooks';
 import Api from './api';
 
 function Pokemon() {
+  //const [allPoke, setAllpoke] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [data, loading] = useFetch(
     'https://pokeapi.co/api/v2/pokemon?limit=30',
     //'https://pokeapi.co/api/v2/pokemon/1',
   );
-  //console.log(data.results);
   return (
     <>
       <div>
@@ -21,7 +22,6 @@ function Pokemon() {
                 .then((response) => response.json())
                 .then((allpokemon) => console.log(allpokemon.name))
             ))}
-            hola
           </ul>
         )}
         <Api />
