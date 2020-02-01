@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
+import '../assets/styles/pokemon.scss';
 import { useFetch } from './hooks';
 import Api from './api';
 
@@ -16,7 +17,7 @@ function Pokemon() {
   const arr = [];
   useEffect(() => {
     //setLoading('true');
-    fetch('https:pokeapi.co/api/v2/pokemon?limit=10')
+    fetch('https:pokeapi.co/api/v2/pokemon?limit=32')
       .then((response) => response.json())
       .then((data) => setResult(
         data.results.map((item) => {
@@ -69,20 +70,27 @@ function Pokemon() {
   console.log(poke);
   return (
     <>
-      <div>
-        <ul>
-          {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
-          { load ? (
-            <p>Loading</p>
-          ) : (
-            poke.map((img) => (
-              <div>
-                <li>{img.name}</li>
-                <img src={img.sprites.front_default} alt='pokeimg' />
+      <div className='pokegallery'>
+
+        {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
+        { load ? (
+          <p>Loading</p>
+        ) : (
+          poke.map((img) => (
+            <div>
+              {/* <li>{img.name}</li>
+                <img src={img.sprites.front_default} alt='pokeimg' /> */}
+              <div className='card' style={{ width: '10rem', height: '15rem' }}>
+                <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
+                <div className='card-body'>
+                  <h5 className='card-title'>{img.name}</h5>
+                  <h6>{img.types[0].type.name}</h6>
+                </div>
               </div>
-            ))
-          )}
-        </ul>
+            </div>
+          ))
+        )}
+
         {/* <button
           onClick={handleClick}
         >
