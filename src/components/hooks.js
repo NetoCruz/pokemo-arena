@@ -1,19 +1,28 @@
-import { useState, useEffect } from 'react';
+function useAsyncHook(searchBook) {
+  const [result, setResult] = React.useState([]);
+  const [loading, setLoading] = React.useState("false");
 
-function useFetch(url) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  async function fetchUrl() {
-    const response = await fetch(url);
-    const json = await response.json();
-    setData(json);
-    setLoading(false);
-  }
-  useEffect(() => {
-    fetchUrl();
-  }, []);
+  React.useEffect(() => {
+    async function fetchBookList() {
+      try {
+        setLoading("true");
+        const response = await fetch(
+          'https://pokeapi.co/api/v2/pokemon?limit=10'
+        );
 
-  return [data, loading];
+        const json = await response.json();
+        //console.log(json);
+        setResult(
+          json.results.map(item => {
+            console.log(item.name);
+            return item.name;
+          }),
+        );
+      } catch (error) {
+        setLoading("null");
+      }
+    }
+  }, [fetchBookList]);
+
+  return [result, loading];
 }
-
-export { useFetch }; // eslint-disable-line

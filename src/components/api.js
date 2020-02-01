@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Api(props) {
-
+function Api({ datos }) {
   //function all(data) {
   //data.map((element) => {
   //console.log(element.name);
@@ -16,14 +15,17 @@ function Api(props) {
   //};
   // eslint-disable-next-line react/destructuring-assignment
   //all(props.datos);
-  // eslint-disable-next-line react/destructuring-assignment
-  console.log(props.datos);
-
+ console.log(datos);
   return (
     <div>
       <ul>
         {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
-        {/* eslint-disable-next-line react/destructuring-assignment */}
+        {
+          datos.map((item)=>(
+          <li>{item.order}</li>
+          ))
+
+        }
       </ul>
     </div>
   );
