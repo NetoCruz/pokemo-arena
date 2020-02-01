@@ -6,8 +6,13 @@ import Pokemon from './pokemon';
 const HelloWorld = () => {
   return (
     <div>
-      <h1>Hola a todos</h1>
-      <img src={logo} alt='logo' />
+      <nav className='navbar navbar-light'>
+        <a className='navbar-brand' href='#'>
+          <img src={logo} width='180' height='90' className='d-inline-block  ' alt='logo' />
+        </a>
+      </nav>
+      <h1>Arena</h1>
+      {/* <img src={logo} alt='logo' /> */}
       <Pokemon />
     </div>
   );
